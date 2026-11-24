@@ -54,9 +54,9 @@ export const services = [
   { title: 'Root Canal Treatment', image: 'service-rootcanal.webp', icon: 'Activity', text: 'Gentle, modern root canal therapy that relieves pain and saves the natural tooth.' },
   { title: 'Braces & Aligners', image: 'service-ortho.webp', icon: 'Smile', text: 'Straighten crooked or crowded teeth with metal, ceramic braces or clear aligners.' },
   { title: 'Tooth Extraction', image: 'service-extraction.webp', icon: 'Syringe', text: 'Comfortable extractions, including wisdom teeth, with careful after-care.' },
-  { title: 'Crowns & Bridges', image: 'service-crowns.jpg', icon: 'Award', text: 'Strong, tooth-coloured crowns and bridges to repair broken or weak teeth.' },
-  { title: 'Smile Makeover', image: 'service-makeover.jpg', icon: 'HeartPulse', text: 'Veneers, contouring and bonding planned together for the smile you want.' },
-  { title: 'Kids Dentistry', image: 'service-kids.jpg', icon: 'Baby', text: 'Friendly, patient care for children — from first visits to sealants and fluoride.' },
+  { title: 'Crowns & Bridges', image: 'service-crowns.webp', icon: 'Award', text: 'Strong, tooth-coloured crowns and bridges to repair broken or weak teeth.' },
+  { title: 'Smile Makeover', image: 'service-makeover.webp', icon: 'HeartPulse', text: 'Veneers, contouring and bonding planned together for the smile you want.' },
+  { title: 'Kids Dentistry', image: 'service-kids.webp', icon: 'Baby', text: 'Friendly, patient care for children — from first visits to sealants and fluoride.' },
 ]
 
 export const journeys = [
