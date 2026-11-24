@@ -233,7 +233,7 @@ export function CallToAction() {
           <p className="relative mx-auto mt-4 flex max-w-xl items-start justify-center gap-2 text-white/90"><MapPin className="mt-1 h-5 w-5 shrink-0" aria-hidden="true" /> {clinic.addressLines.join(', ')}</p>
           <div className="relative mt-8 flex flex-wrap justify-center gap-4">
             <a href={telLink} className="btn-white"><Phone className="h-4 w-4" aria-hidden="true" /> Call {clinic.phoneDisplay}</a>
-            <a href={mapsLink} target="_blank" rel="noreferrer" className="btn border border-white text-white hover:bg-white/10">Get Directions <ArrowRight className="h-4 w-4" aria-hidden="true" /></a>
+            <a href="#appointment" className="btn border border-white text-white hover:bg-white/10">Book Appointment <ArrowRight className="h-4 w-4" aria-hidden="true" /></a>
           </div>
         </Reveal>
       </div>
