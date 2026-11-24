@@ -48,9 +48,9 @@ export const marqueeItems = [
 
 // `image` files are optional: put photos in /public/images with these names.
 export const services = [
-  { title: 'General Dentistry', image: 'service-general.jpg', icon: 'Stethoscope', text: 'Check-ups, cleaning, fillings and everyday care that keep your teeth and gums healthy.' },
-  { title: 'Dental Implants', image: 'service-implant.jpg', icon: 'ShieldCheck', text: 'Permanent, natural-looking replacements for missing teeth that restore your bite.' },
-  { title: 'Teeth Whitening', image: 'service-whitening.jpg', icon: 'Sparkles', text: 'Safe, professional whitening that lifts stains and brightens your smile.' },
+  { title: 'General Dentistry', image: 'service-general.webp', icon: 'Stethoscope', text: 'Check-ups, cleaning, fillings and everyday care that keep your teeth and gums healthy.' },
+  { title: 'Dental Implants', image: 'service-implant.webp', icon: 'ShieldCheck', text: 'Permanent, natural-looking replacements for missing teeth that restore your bite.' },
+  { title: 'Teeth Whitening', image: 'service-whitening.webp', icon: 'Sparkles', text: 'Safe, professional whitening that lifts stains and brightens your smile.' },
   { title: 'Root Canal Treatment', image: 'service-rootcanal.jpg', icon: 'Activity', text: 'Gentle, modern root canal therapy that relieves pain and saves the natural tooth.' },
   { title: 'Braces & Aligners', image: 'service-ortho.jpg', icon: 'Smile', text: 'Straighten crooked or crowded teeth with metal, ceramic braces or clear aligners.' },
   { title: 'Tooth Extraction', image: 'service-extraction.jpg', icon: 'Syringe', text: 'Comfortable extractions, including wisdom teeth, with careful after-care.' },
