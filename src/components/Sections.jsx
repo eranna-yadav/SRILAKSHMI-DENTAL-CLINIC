@@ -1,11 +1,28 @@
-import { useState } from 'react'
-import { AnimatePresence, motion } from 'framer-motion'
+import { useEffect, useRef, useState } from 'react'
+import { AnimatePresence, animate, motion, useInView, useReducedMotion } from 'framer-motion'
 import { ArrowRight, ChevronLeft, ChevronRight, ChevronsLeftRight, CircleCheck, MapPin, MessageCircle, MessagesSquare, Minus, Phone, Plus, Quote, Star } from 'lucide-react'
 import { clinic, doctorFocus, faqs, mapsLink, telLink, testimonials, tips, whatsappLink } from '../data'
 import { Photo, Reveal, SectionHeading } from './ui'
 
 export function BeforeAfter() {
   const [pos, setPos] = useState(50)
+  const ref = useRef(null)
+  const inView = useInView(ref, { once: true, amount: 0.6 })
+  const reduce = useReducedMotion()
+  const touched = useRef(false)
+
+  // Glide the divider once when the section comes into view, to show it can slide.
+  useEffect(() => {
+    if (!inView || reduce) return
+    const c = animate(50, [50, 20, 80, 50], {
+      duration: 3,
+      ease: 'easeInOut',
+      delay: 0.4,
+      onUpdate: (v) => !touched.current && setPos(v),
+    })
+    return () => c.stop()
+  }, [inView, reduce])
+
   return (
     <section className="py-20 lg:py-28">
       <div className="container-x">
@@ -15,18 +32,34 @@ export function BeforeAfter() {
           </Reveal>
           <Reveal><a href="#appointment" className="btn-primary">Get Your Consultation</a></Reveal>
         </div>
-        <Reveal className="relative mt-12 aspect-[16/9] w-full select-none overflow-hidden rounded-3xl bg-soft">
-          <Photo src="after.jpg" alt="Smile after treatment" className="absolute inset-0 h-full w-full" />
+        <div ref={ref} className="relative mt-12 aspect-[4/3] w-full select-none overflow-hidden rounded-3xl bg-soft sm:aspect-[16/9]">
+          {/* After (full, underneath) */}
+          <Photo src="after.webp" alt="Bright white smile after teeth whitening" className="absolute inset-0 h-full w-full object-[50%_58%]" />
+          <span className="absolute right-4 top-4 rounded-full bg-primary px-4 py-1.5 text-sm font-semibold text-white">After</span>
+
+          {/* Before (on top, clipped to the left of the divider) — its label is clipped with it */}
           <div className="absolute inset-0" style={{ clipPath: `inset(0 ${100 - pos}% 0 0)` }}>
-            <Photo src="before.jpg" alt="Smile before treatment" className="h-full w-full grayscale-[30%]" />
+            <Photo src="before.webp" alt="Stained, yellow smile before teeth whitening" className="absolute inset-0 h-full w-full object-[50%_58%]" />
+            <span className="absolute left-4 top-4 rounded-full bg-navy px-4 py-1.5 text-sm font-semibold text-white">Before</span>
           </div>
-          <span className="absolute left-4 top-4 rounded-full bg-navy/80 px-3 py-1 text-sm font-semibold text-white">Before</span>
-          <span className="absolute right-4 top-4 rounded-full bg-primary px-3 py-1 text-sm font-semibold text-white">After</span>
+
           <div className="pointer-events-none absolute inset-y-0 w-1 -translate-x-1/2 bg-white" style={{ left: `${pos}%` }}>
             <span className="absolute left-1/2 top-1/2 flex h-12 w-12 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white text-primary shadow-card"><ChevronsLeftRight className="h-6 w-6" /></span>
           </div>
-          <input type="range" min="0" max="100" value={pos} onChange={(e) => setPos(+e.target.value)} aria-label="Drag to compare before and after" className="absolute inset-0 h-full w-full cursor-ew-resize opacity-0" />
-        </Reveal>
+          <input
+            type="range"
+            min="0"
+            max="100"
+            step="0.5"
+            value={pos}
+            onPointerDown={() => (touched.current = true)}
+            onKeyDown={() => (touched.current = true)}
+            onChange={(e) => { touched.current = true; setPos(+e.target.value) }}
+            aria-label="Drag to compare before and after"
+            className="absolute inset-0 h-full w-full cursor-ew-resize opacity-0"
+          />
+        </div>
+        <p className="mt-4 text-center text-sm text-muted">Drag the slider to compare</p>
       </div>
     </section>
   )
