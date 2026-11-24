@@ -75,21 +75,23 @@ export function Steps() {
     <section className="py-20 lg:py-28">
       <div className="container-x">
         <SectionHeading eyebrow="How It Works" title="The Path to" highlight="Your Perfect Smile" />
-        <ol className="relative mt-16 grid gap-12 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
-          <div className="absolute left-[12.5%] right-[12.5%] top-12 hidden border-t-2 border-dashed border-primary/30 lg:block" aria-hidden="true" />
+        <div className="relative mt-16">
+        <div className="absolute left-[12.5%] right-[12.5%] top-12 hidden border-t-2 border-dashed border-primary/30 lg:block" aria-hidden="true" />
+        <ol className="relative grid gap-12 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
           {steps.map((s, i) => (
-            <Reveal key={s.title} delay={i * 0.12} className="relative text-center">
-              <li>
+            <li key={s.title} className="relative text-center">
+              <Reveal delay={i * 0.12}>
                 <div className="relative mx-auto flex h-24 w-24 items-center justify-center rounded-full bg-primary text-white ring-8 ring-primary-light">
                   <Icon name={s.icon} className="h-9 w-9" />
                   <span className="absolute -right-2 -top-1 flex h-9 w-9 items-center justify-center rounded-full bg-navy text-sm font-bold text-white ring-4 ring-white">{String(i + 1).padStart(2, '0')}</span>
                 </div>
                 <h3 className="mt-6 text-lg font-bold text-navy">{s.title}</h3>
                 <p className="mx-auto mt-2 max-w-xs leading-relaxed text-muted">{s.text}</p>
-              </li>
-            </Reveal>
+              </Reveal>
+            </li>
           ))}
         </ol>
+        </div>
       </div>
     </section>
   )

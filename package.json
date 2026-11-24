@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && vite build --ssr src/entry-server.jsx --outDir dist-server && vite build --ssr src/seo.js --outDir dist-server --emptyOutDir false && node scripts/prerender.mjs",
     "preview": "vite preview"
   },
   "repository": {
