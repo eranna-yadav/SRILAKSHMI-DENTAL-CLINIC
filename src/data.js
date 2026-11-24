@@ -88,9 +88,9 @@ export const faqs = [
 ]
 
 export const tips = [
-  { title: 'Brushing Right: The 2-Minute Rule', tag: 'Daily Care', image: 'tip-brushing.jpg', text: 'Brush twice a day for two minutes with fluoride toothpaste, using gentle circles along the gum line.' },
-  { title: 'Why Sensitive Teeth Hurt', tag: 'Sensitivity', image: 'tip-sensitivity.jpg', text: 'Worn enamel and receding gums expose sensitive layers. A desensitising paste and a check-up can help.' },
-  { title: 'Your Child’s First Dental Visit', tag: 'Kids', image: 'tip-kids.jpg', text: 'Bring children in by their first birthday so the first visit is a friendly one, not an emergency.' },
+  { title: 'Brushing Right: The 2-Minute Rule', tag: 'Daily Care', image: 'tip-brushing.webp', text: 'Brush twice a day for two minutes with fluoride toothpaste, using gentle circles along the gum line.' },
+  { title: 'Why Sensitive Teeth Hurt', tag: 'Sensitivity', image: 'tip-sensitivity.webp', text: 'Worn enamel and receding gums expose sensitive layers. A desensitising paste and a check-up can help.' },
+  { title: 'Your Child’s First Dental Visit', tag: 'Kids', image: 'tip-kids.webp', text: 'Bring children in by their first birthday so the first visit is a friendly one, not an emergency.' },
 ]
 
 export const doctorFocus = [
