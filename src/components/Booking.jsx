@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { CircleCheck, Clock, MessageCircle, Phone } from 'lucide-react'
 import { clinic, services, telLink, whatsappLink } from '../data'
-import { Reveal } from './ui'
+import { Reveal, SectionHeading } from './ui'
 
 const empty = { name: '', phone: '', treatment: '', date: '', time: '', notes: '' }
 
@@ -41,15 +41,12 @@ export default function Booking() {
 
   return (
     <section id="appointment" className="bg-soft py-20 lg:py-28">
-      <div className="container-x grid gap-12 lg:grid-cols-[1.4fr_1fr]">
+      <div className="container-x">
+      <SectionHeading eyebrow="Book an Appointment" title="Easy Online Booking" highlight="for Your Dental Visit" />
+      <p className="mx-auto mt-4 max-w-xl text-center text-muted">Fill in your details and send them to us on WhatsApp. We will call you back to confirm your appointment time.</p>
+      <div className="mt-12 grid gap-12 lg:grid-cols-[1.4fr_1fr]">
         <Reveal>
-          <p className="eyebrow">Book an Appointment</p>
-          <h2 className="mt-3 text-3xl font-bold leading-tight text-primary sm:text-4xl lg:text-[44px]">
-            Easy Online Booking <span className="block text-navy">for Your Dental Visit</span>
-          </h2>
-          <p className="mt-4 max-w-xl text-muted">Fill in your details and send them to us on WhatsApp. We will call you back to confirm your appointment time.</p>
-
-          <form onSubmit={submit} noValidate className="mt-8 grid gap-5 sm:grid-cols-2">
+          <form onSubmit={submit} noValidate className="grid gap-5 sm:grid-cols-2">
             <Field id="b-name" label="Your Name *" error={errors.name}>
               <input id="b-name" className="field" value={form.name} onChange={set('name')} placeholder="Full name" autoComplete="name" aria-invalid={!!errors.name} aria-describedby={errors.name ? 'b-name-err' : undefined} />
             </Field>
@@ -105,6 +102,7 @@ export default function Booking() {
             </span>
           </a>
         </Reveal>
+      </div>
       </div>
     </section>
   )

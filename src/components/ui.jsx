@@ -67,11 +67,11 @@ export function Reveal({ children, delay = 0, className = '', y = 24 }) {
   )
 }
 
-export function SectionHeading({ eyebrow, title, highlight, after = '', light = false, center = true }) {
+export function SectionHeading({ eyebrow, title, highlight, after = '', light = false, className = '' }) {
   return (
-    <Reveal className={center ? 'mx-auto max-w-2xl text-center' : ''}>
+    <Reveal className={`mx-auto max-w-3xl text-center ${className}`}>
       <p className={light ? 'eyebrow-light' : 'eyebrow'}>{eyebrow}</p>
-      <h2 className={`mt-3 text-3xl font-bold leading-tight sm:text-4xl lg:text-[44px] ${light ? 'text-white' : 'text-navy'}`}>
+      <h2 className={`mt-3 text-balance text-3xl font-bold leading-tight sm:text-4xl lg:text-[44px] ${light ? 'text-white' : 'text-navy'}`}>
         {title} <span className={light ? 'text-[#8EA2FF]' : 'text-primary'}>{highlight}</span>
         {after && <> {after}</>}
       </h2>

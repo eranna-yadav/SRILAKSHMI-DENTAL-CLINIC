@@ -6,7 +6,7 @@ export function Services() {
   return (
     <section id="services" className="bg-soft py-20 lg:py-28">
       <div className="container-x">
-        <SectionHeading eyebrow="Our Services" title="A Wide Range of Services" highlight="for Your Best Smile" center={false} />
+        <SectionHeading eyebrow="Our Services" title="A Wide Range of Services" highlight="for Your Best Smile" />
 
         <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {services.map((s, i) => (
@@ -38,10 +38,7 @@ export function Journeys() {
   return (
     <section className="bg-navy py-20 lg:py-28">
       <div className="container-x">
-        <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
-          <SectionHeading eyebrow="Treatment Journeys" title="Your Path to a" highlight="Healthier, Happier Smile" light center={false} />
-          <Reveal><a href="#appointment" className="btn-primary">Start Your Journey</a></Reveal>
-        </div>
+        <SectionHeading eyebrow="Treatment Journeys" title="Your Path to a" highlight="Healthier, Happier Smile" light />
         <div className="mt-12 grid gap-8 md:grid-cols-2">
           {journeys.map((j, i) => (
             <Reveal key={j.title} delay={i * 0.1}>
@@ -65,6 +62,7 @@ export function Journeys() {
             </Reveal>
           ))}
         </div>
+        <Reveal className="mt-12 text-center"><a href="#appointment" className="btn-primary">Start Your Journey</a></Reveal>
       </div>
     </section>
   )

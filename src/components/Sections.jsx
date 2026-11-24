@@ -26,12 +26,7 @@ export function BeforeAfter() {
   return (
     <section className="py-20 lg:py-28">
       <div className="container-x">
-        <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
-          <Reveal>
-            <h2 className="text-3xl font-bold leading-tight text-navy sm:text-4xl lg:text-[44px]">See the Difference: <span className="block text-primary">Before &amp; After</span></h2>
-          </Reveal>
-          <Reveal><a href="#appointment" className="btn-primary">Get Your Consultation</a></Reveal>
-        </div>
+        <SectionHeading eyebrow="Before & After" title="See the" highlight="Difference" />
         <div ref={ref} className="relative mt-12 aspect-[4/3] w-full select-none overflow-hidden rounded-3xl bg-soft sm:aspect-[16/9]">
           {/* After (full, underneath) */}
           <Photo src="after.webp" alt="Bright white smile after teeth whitening" className="absolute inset-0 h-full w-full object-[50%_58%]" />
@@ -60,6 +55,7 @@ export function BeforeAfter() {
           />
         </div>
         <p className="mt-4 text-center text-sm text-muted">Drag the slider to compare</p>
+        <Reveal className="mt-8 text-center"><a href="#appointment" className="btn-primary">Get Your Consultation</a></Reveal>
       </div>
     </section>
   )
@@ -113,14 +109,15 @@ export function Testimonials() {
 export function Dentist() {
   return (
     <section id="dentist" className="py-20 lg:py-28">
-      <div className="container-x grid items-center gap-12 lg:grid-cols-[1fr_1.2fr]">
+      <div className="container-x">
+      <SectionHeading eyebrow="Meet Your Dentist" title="Your Smile in" highlight="Caring Hands" />
+      <div className="mt-14 grid items-center gap-12 lg:grid-cols-[1fr_1.2fr]">
         <Reveal className="relative">
           <div className="absolute -left-4 -top-4 h-full w-full rounded-3xl bg-primary-light" aria-hidden="true" />
           <Photo src="doctor.webp" alt={`${clinic.doctor}, dentist at ${clinic.name}`} className="relative aspect-[4/5] w-full rounded-3xl object-top" />
         </Reveal>
         <Reveal delay={0.1}>
-          <p className="eyebrow">Meet Your Dentist</p>
-          <h2 className="mt-3 text-3xl font-bold text-navy sm:text-4xl lg:text-[44px]">{clinic.doctor}</h2>
+          <h3 className="text-3xl font-bold text-navy sm:text-4xl">{clinic.doctor}</h3>
           <p className="mt-1 text-lg font-semibold text-primary">Dental Surgeon · {clinic.name}</p>
           <p className="mt-6 text-lg leading-relaxed text-muted">
             {clinic.doctor} leads the clinic with a simple approach: listen carefully, explain every option clearly and treat each patient gently. Whether it is a routine check-up or a complete smile makeover, you are in caring, experienced hands.
@@ -138,6 +135,7 @@ export function Dentist() {
             <a href={telLink} className="btn-ghost"><Phone className="h-4 w-4" aria-hidden="true" /> {clinic.phoneDisplay}</a>
           </div>
         </Reveal>
+      </div>
       </div>
     </section>
   )
@@ -196,10 +194,7 @@ export function Tips() {
   return (
     <section className="py-20 lg:py-28">
       <div className="container-x">
-        <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
-          <SectionHeading eyebrow="Dental Care Tips" title="Simple Habits for" highlight="Healthy Teeth" center={false} />
-          <Reveal><a href="#appointment" className="btn-primary">Book a Check-Up</a></Reveal>
-        </div>
+        <SectionHeading eyebrow="Dental Care Tips" title="Simple Habits for" highlight="Healthy Teeth" />
         <div className="mt-12 grid gap-8 md:grid-cols-3">
           {tips.map((t, i) => (
             <Reveal key={t.title} delay={i * 0.08}>
@@ -216,6 +211,7 @@ export function Tips() {
             </Reveal>
           ))}
         </div>
+        <Reveal className="mt-12 text-center"><a href="#appointment" className="btn-primary">Book a Check-Up</a></Reveal>
       </div>
     </section>
   )
@@ -228,7 +224,7 @@ export function CallToAction() {
         <Reveal className="relative overflow-hidden rounded-3xl bg-primary px-6 py-14 text-center text-white sm:px-12">
           <div className="absolute -left-16 -top-16 h-56 w-56 rounded-full bg-white/10" aria-hidden="true" />
           <div className="absolute -bottom-20 -right-10 h-72 w-72 rounded-full bg-white/10" aria-hidden="true" />
-          <p className="eyebrow-light relative">Visit Us</p>
+          <p className="eyebrow relative text-white">Visit Us</p>
           <h2 className="relative mx-auto mt-3 max-w-2xl text-3xl font-bold sm:text-4xl">Ready for a healthier, brighter smile?</h2>
           <p className="relative mx-auto mt-4 flex max-w-xl items-start justify-center gap-2 text-white/90"><MapPin className="mt-1 h-5 w-5 shrink-0" aria-hidden="true" /> {clinic.addressLines.join(', ')}</p>
           <div className="relative mt-8 flex flex-wrap justify-center gap-4">

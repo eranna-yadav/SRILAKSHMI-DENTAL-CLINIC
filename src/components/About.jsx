@@ -1,6 +1,6 @@
 import { ArrowUpRight, CircleCheck } from 'lucide-react'
 import { clinic, marqueeItems } from '../data'
-import { Photo, Reveal, Sparkle, ToothIcon } from './ui'
+import { Photo, Reveal, SectionHeading, Sparkle, ToothIcon } from './ui'
 
 export function About() {
   const points = [
@@ -10,7 +10,9 @@ export function About() {
   ]
   return (
     <section id="about" className="py-20 lg:py-28">
-      <div className="container-x grid items-center gap-14 lg:grid-cols-2">
+      <div className="container-x">
+      <SectionHeading eyebrow="About Us" title="Expert, Gentle Care" highlight="for Every Smile" />
+      <div className="mt-14 grid items-center gap-14 lg:grid-cols-2">
         <Reveal className="relative mx-auto w-full max-w-lg">
           <Sparkle className="absolute -left-2 top-4 h-8 w-8 text-primary" />
           <Sparkle className="absolute left-12 top-14 h-14 w-14 text-primary" />
@@ -33,11 +35,7 @@ export function About() {
         </Reveal>
 
         <Reveal delay={0.1}>
-          <p className="eyebrow">About Us</p>
-          <h2 className="mt-3 text-3xl font-bold leading-tight text-primary sm:text-4xl lg:text-[44px]">
-            Expert, Gentle Care <span className="block text-navy">for Every Smile</span>
-          </h2>
-          <p className="mt-6 text-lg leading-relaxed text-muted">
+          <p className="text-lg leading-relaxed text-muted">
             {clinic.name} is a family dental clinic on Park Road, Hassan, led by {clinic.doctor}. We focus on comfortable treatment, clear explanations and results that last — so every visit leaves you smiling.
           </p>
           <ul className="mt-6 space-y-3">
@@ -49,6 +47,7 @@ export function About() {
           </ul>
           <a href="#dentist" className="btn-primary mt-8">Meet the Dentist</a>
         </Reveal>
+      </div>
       </div>
     </section>
   )
