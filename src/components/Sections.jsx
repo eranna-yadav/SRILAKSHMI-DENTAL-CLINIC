@@ -116,7 +116,7 @@ export function Dentist() {
       <div className="container-x grid items-center gap-12 lg:grid-cols-[1fr_1.2fr]">
         <Reveal className="relative">
           <div className="absolute -left-4 -top-4 h-full w-full rounded-3xl bg-primary-light" aria-hidden="true" />
-          <Photo src="doctor.jpg" alt={`${clinic.doctor}, dentist at ${clinic.name}`} label="Add doctor.jpg" className="relative aspect-[4/5] w-full rounded-3xl" />
+          <Photo src="doctor.webp" alt={`${clinic.doctor}, dentist at ${clinic.name}`} className="relative aspect-[4/5] w-full rounded-3xl object-top" />
         </Reveal>
         <Reveal delay={0.1}>
           <p className="eyebrow">Meet Your Dentist</p>
