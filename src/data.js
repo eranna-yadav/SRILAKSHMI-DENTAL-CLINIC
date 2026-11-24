@@ -60,8 +60,8 @@ export const services = [
 ]
 
 export const journeys = [
-  { title: 'A Brighter Smile', tags: ['Teeth Whitening', 'Cleaning'], image: 'journey-whitening.jpg', text: 'Scaling and polishing followed by professional whitening for a noticeably brighter smile.' },
-  { title: 'Straighter Teeth, More Confidence', tags: ['Braces', 'Aligners'], image: 'journey-braces.jpg', text: 'A step-by-step orthodontic plan with regular reviews until the teeth are aligned.' },
+  { title: 'A Brighter Smile', tags: ['Teeth Whitening', 'Cleaning'], image: 'journey-whitening.webp', text: 'Scaling and polishing followed by professional whitening for a noticeably brighter smile.' },
+  { title: 'Straighter Teeth, More Confidence', tags: ['Braces', 'Aligners'], image: 'journey-braces.webp', text: 'A step-by-step orthodontic plan with regular reviews until the teeth are aligned.' },
 ]
 
 export const steps = [

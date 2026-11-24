@@ -46,7 +46,7 @@ export function Journeys() {
           {journeys.map((j, i) => (
             <Reveal key={j.title} delay={i * 0.1}>
               <article className="group relative overflow-hidden rounded-2xl">
-                <Photo src={j.image} alt={j.title} label={j.title} className="aspect-[4/3] w-full transition-transform duration-500 group-hover:scale-105" />
+                <Photo src={j.image} alt={j.title} label={j.title} className="aspect-[4/3] w-full object-bottom transition-transform duration-500 group-hover:scale-105" />
                 <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-navy via-navy/80 to-transparent p-6 pt-24">
                   <div className="flex flex-wrap gap-2">
                     {j.tags.map((t) => <span key={t} className="rounded-full bg-white/15 px-3 py-1 text-xs font-semibold text-white backdrop-blur">{t}</span>)}
