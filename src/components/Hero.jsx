@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { ArrowRight, Calendar, Clock, Phone, ShieldCheck, Star, User } from 'lucide-react'
 import { clinic, telLink } from '../data'
-import { Photo, Sparkle } from './ui'
+import { Sparkle } from './ui'
 
 export default function Hero() {
   return (
@@ -25,18 +25,26 @@ export default function Hero() {
         </motion.div>
 
         <motion.div className="relative mx-auto w-full max-w-md lg:max-w-none" initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.8, delay: 0.15 }}>
-          <div className="absolute left-1/2 top-1/2 aspect-square w-[88%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary" />
-          <div className="absolute left-1/2 top-1/2 aspect-square w-[100%] -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-dashed border-primary/30" />
-          <Sparkle className="absolute left-2 top-6 h-8 w-8 text-primary" />
-          <Sparkle className="absolute right-4 top-20 h-5 w-5 text-primary/60" />
-          <Photo src="hero.jpg" alt="Smiling patient at Srilakshmi Dental Clinic" label="Add hero.jpg" className="relative mx-auto aspect-[4/5] w-[80%] rounded-b-[200px] rounded-t-[200px]" />
-          <motion.div className="absolute -left-2 bottom-16 flex items-center gap-3 rounded-2xl bg-white p-3 pr-5 shadow-card sm:left-0" animate={{ y: [0, -8, 0] }} transition={{ duration: 4, repeat: Infinity }}>
+          <Sparkle className="absolute left-2 top-6 z-10 h-8 w-8 text-primary" />
+          <Sparkle className="absolute right-4 top-12 z-10 h-5 w-5 text-primary/60" />
+          <div className="relative isolate mx-auto w-[92%] bg-soft">
+            <img
+              src="/images/hero.webp"
+              alt="Smiling dental professional at Srilakshmi Dental Clinic"
+              width="900"
+              height="925"
+              fetchpriority="high"
+              className="w-full mix-blend-multiply"
+              style={{ WebkitMaskImage: 'linear-gradient(to right, transparent, #000 6%, #000 94%, transparent), linear-gradient(to bottom, transparent, #000 6%)', WebkitMaskComposite: 'source-in', maskImage: 'linear-gradient(to right, transparent, #000 6%, #000 94%, transparent), linear-gradient(to bottom, transparent, #000 6%)', maskComposite: 'intersect' }}
+            />
+          </div>
+          <motion.div className="absolute -left-2 bottom-16 z-10 flex items-center gap-3 rounded-2xl bg-white p-3 pr-5 shadow-card sm:left-0" animate={{ y: [0, -8, 0] }} transition={{ duration: 4, repeat: Infinity }}>
             <span className="flex h-11 w-11 items-center justify-center rounded-full bg-primary-light text-primary"><Star className="h-5 w-5 fill-current" aria-hidden="true" /></span>
             <span className="text-sm"><strong className="block text-navy">Family Dentistry</strong><span className="text-muted">Kids to seniors</span></span>
           </motion.div>
-          <motion.div className="absolute -right-2 top-24 rounded-2xl bg-white p-4 shadow-card sm:right-0" animate={{ y: [0, 8, 0] }} transition={{ duration: 5, repeat: Infinity }}>
-            <strong className="block text-navy">{clinic.doctor}</strong>
-            <span className="text-sm text-muted">Dental Surgeon</span>
+          <motion.div className="absolute -right-2 top-24 z-10 hidden rounded-2xl bg-white p-4 shadow-card sm:right-0 sm:block" animate={{ y: [0, 8, 0] }} transition={{ duration: 5, repeat: Infinity }}>
+            <strong className="block text-navy">Gentle Care</strong>
+            <span className="text-sm text-muted">Comfortable treatment</span>
           </motion.div>
         </motion.div>
       </div>
