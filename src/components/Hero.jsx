@@ -1,0 +1,82 @@
+import { motion } from 'framer-motion'
+import { ArrowRight, Calendar, Clock, Phone, ShieldCheck, Star, User } from 'lucide-react'
+import { clinic, telLink } from '../data'
+import { Photo, Sparkle } from './ui'
+
+export default function Hero() {
+  return (
+    <section id="home" className="relative overflow-hidden bg-soft">
+      <div className="container-x grid items-center gap-10 pb-28 pt-12 lg:grid-cols-2 lg:pb-36 lg:pt-16">
+        <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
+          <span className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-semibold text-navy shadow-card">
+            <ShieldCheck className="h-4 w-4 text-primary" aria-hidden="true" /> Trusted Dental Care in Hassan
+          </span>
+          <h1 className="mt-6 text-4xl font-extrabold leading-[1.1] text-navy sm:text-5xl lg:text-6xl">
+            Your <span className="text-primary">Best Dental</span>
+            <br /> Experience Awaits
+          </h1>
+          <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted">
+            Gentle, modern dentistry for the whole family at {clinic.name}. From routine check-ups to implants and smile makeovers, {clinic.doctor} and team take care of every smile.
+          </p>
+          <div className="mt-8 flex flex-wrap items-center gap-4">
+            <a href="#appointment" className="btn-primary">Book an Appointment <ArrowRight className="h-4 w-4" aria-hidden="true" /></a>
+            <a href={telLink} className="btn-ghost"><span className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-primary shadow-card"><Phone className="h-4 w-4" aria-hidden="true" /></span> {clinic.phoneDisplay}</a>
+          </div>
+        </motion.div>
+
+        <motion.div className="relative mx-auto w-full max-w-md lg:max-w-none" initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.8, delay: 0.15 }}>
+          <div className="absolute left-1/2 top-1/2 aspect-square w-[88%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary" />
+          <div className="absolute left-1/2 top-1/2 aspect-square w-[100%] -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-dashed border-primary/30" />
+          <Sparkle className="absolute left-2 top-6 h-8 w-8 text-primary" />
+          <Sparkle className="absolute right-4 top-20 h-5 w-5 text-primary/60" />
+          <Photo src="hero.jpg" alt="Smiling patient at Srilakshmi Dental Clinic" label="Add hero.jpg" className="relative mx-auto aspect-[4/5] w-[80%] rounded-b-[200px] rounded-t-[200px]" />
+          <motion.div className="absolute -left-2 bottom-16 flex items-center gap-3 rounded-2xl bg-white p-3 pr-5 shadow-card sm:left-0" animate={{ y: [0, -8, 0] }} transition={{ duration: 4, repeat: Infinity }}>
+            <span className="flex h-11 w-11 items-center justify-center rounded-full bg-primary-light text-primary"><Star className="h-5 w-5 fill-current" aria-hidden="true" /></span>
+            <span className="text-sm"><strong className="block text-navy">Family Dentistry</strong><span className="text-muted">Kids to seniors</span></span>
+          </motion.div>
+          <motion.div className="absolute -right-2 top-24 rounded-2xl bg-white p-4 shadow-card sm:right-0" animate={{ y: [0, 8, 0] }} transition={{ duration: 5, repeat: Infinity }}>
+            <strong className="block text-navy">{clinic.doctor}</strong>
+            <span className="text-sm text-muted">Dental Surgeon</span>
+          </motion.div>
+        </motion.div>
+      </div>
+
+      <QuickBooking />
+    </section>
+  )
+}
+
+function QuickBooking() {
+  return (
+    <div className="container-x relative -mt-20 pb-12 lg:-mt-24">
+      <motion.form
+        action="#appointment"
+        onSubmit={(e) => {
+          e.preventDefault()
+          const f = new FormData(e.currentTarget)
+          window.dispatchEvent(new CustomEvent('prefill-booking', { detail: Object.fromEntries(f) }))
+          document.getElementById('appointment')?.scrollIntoView({ behavior: 'smooth' })
+        }}
+        className="grid gap-4 rounded-2xl bg-white p-5 shadow-card sm:grid-cols-2 lg:grid-cols-[repeat(4,1fr)_auto] lg:items-end lg:p-6"
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.3 }}
+      >
+        <QuickField icon={User} id="q-name" label="Name"><input id="q-name" name="name" className="field" placeholder="Your name" autoComplete="name" /></QuickField>
+        <QuickField icon={Phone} id="q-phone" label="Phone Number"><input id="q-phone" name="phone" type="tel" className="field" placeholder="Your phone" autoComplete="tel" /></QuickField>
+        <QuickField icon={Calendar} id="q-date" label="Preferred Date"><input id="q-date" name="date" type="date" className="field" /></QuickField>
+        <QuickField icon={Clock} id="q-time" label="Preferred Time"><input id="q-time" name="time" type="time" className="field" /></QuickField>
+        <button type="submit" className="btn-primary h-12 sm:col-span-2 lg:col-span-1">Book Appointment</button>
+      </motion.form>
+    </div>
+  )
+}
+
+function QuickField({ icon: I, id, label, children }) {
+  return (
+    <div>
+      <label htmlFor={id} className="label flex items-center gap-2"><I className="h-4 w-4 text-primary" aria-hidden="true" />{label}</label>
+      {children}
+    </div>
+  )
+}

@@ -1,0 +1,209 @@
+import { useState } from 'react'
+import { AnimatePresence, motion } from 'framer-motion'
+import { ArrowRight, ChevronLeft, ChevronRight, ChevronsLeftRight, CircleCheck, MapPin, MessageCircle, MessagesSquare, Minus, Phone, Plus, Quote, Star } from 'lucide-react'
+import { clinic, doctorFocus, faqs, mapsLink, telLink, testimonials, tips, whatsappLink } from '../data'
+import { Photo, Reveal, SectionHeading } from './ui'
+
+export function BeforeAfter() {
+  const [pos, setPos] = useState(50)
+  return (
+    <section className="py-20 lg:py-28">
+      <div className="container-x">
+        <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
+          <Reveal>
+            <h2 className="text-3xl font-bold leading-tight text-navy sm:text-4xl lg:text-[44px]">See the Difference: <span className="block text-primary">Before &amp; After</span></h2>
+          </Reveal>
+          <Reveal><a href="#appointment" className="btn-primary">Get Your Consultation</a></Reveal>
+        </div>
+        <Reveal className="relative mt-12 aspect-[16/9] w-full select-none overflow-hidden rounded-3xl bg-soft">
+          <Photo src="after.jpg" alt="Smile after treatment" className="absolute inset-0 h-full w-full" />
+          <div className="absolute inset-0" style={{ clipPath: `inset(0 ${100 - pos}% 0 0)` }}>
+            <Photo src="before.jpg" alt="Smile before treatment" className="h-full w-full grayscale-[30%]" />
+          </div>
+          <span className="absolute left-4 top-4 rounded-full bg-navy/80 px-3 py-1 text-sm font-semibold text-white">Before</span>
+          <span className="absolute right-4 top-4 rounded-full bg-primary px-3 py-1 text-sm font-semibold text-white">After</span>
+          <div className="pointer-events-none absolute inset-y-0 w-1 -translate-x-1/2 bg-white" style={{ left: `${pos}%` }}>
+            <span className="absolute left-1/2 top-1/2 flex h-12 w-12 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white text-primary shadow-card"><ChevronsLeftRight className="h-6 w-6" /></span>
+          </div>
+          <input type="range" min="0" max="100" value={pos} onChange={(e) => setPos(+e.target.value)} aria-label="Drag to compare before and after" className="absolute inset-0 h-full w-full cursor-ew-resize opacity-0" />
+        </Reveal>
+      </div>
+    </section>
+  )
+}
+
+export function Testimonials() {
+  const [i, setI] = useState(0)
+  const n = testimonials.length
+  const pair = [testimonials[i % n], testimonials[(i + 1) % n]]
+  return (
+    <section className="bg-navy py-20 lg:py-28">
+      <div className="container-x">
+        <SectionHeading eyebrow="Testimonials" title="What Our" highlight="Patients" after="Have to Say" light />
+        <div className="mt-12 grid gap-6 md:grid-cols-2">
+          <AnimatePresence mode="popLayout" initial={false}>
+            {pair.map((t, k) => (
+              <motion.figure key={`${i}-${k}`} initial={{ opacity: 0, x: 40 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -40 }} transition={{ duration: 0.4, delay: k * 0.05 }} className={`rounded-2xl bg-white p-8 ${k === 1 ? 'hidden md:block' : ''}`}>
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-1" aria-label={`${t.rating} out of 5 stars`}>
+                    {Array.from({ length: 5 }).map((_, s) => <Star key={s} className={`h-5 w-5 ${s < t.rating ? 'fill-amber-400 text-amber-400' : 'text-slate-300'}`} aria-hidden="true" />)}
+                    <span className="ml-2 font-semibold text-navy">{t.rating}.0</span>
+                  </div>
+                  <Quote className="h-10 w-10 text-primary/20" aria-hidden="true" />
+                </div>
+                <h3 className="mt-4 text-xl font-bold text-navy">{t.title}</h3>
+                <blockquote className="mt-3 leading-relaxed text-muted">“{t.text}”</blockquote>
+                <figcaption className="mt-6 flex items-center gap-3 border-t border-slate-100 pt-6">
+                  <span className="flex h-12 w-12 items-center justify-center rounded-full bg-primary-light font-bold text-primary">{t.name[0]}</span>
+                  <span><strong className="block text-navy">{t.name}</strong><span className="text-sm text-muted">{t.role}</span></span>
+                </figcaption>
+              </motion.figure>
+            ))}
+          </AnimatePresence>
+        </div>
+        <div className="mt-10 flex items-center justify-center gap-4">
+          <button type="button" onClick={() => setI((i - 1 + n) % n)} className="flex h-11 w-11 cursor-pointer items-center justify-center rounded-full border border-white/30 text-white hover:bg-white/10" aria-label="Previous testimonial"><ChevronLeft className="h-5 w-5" /></button>
+          <div className="flex gap-2">
+            {testimonials.map((_, d) => (
+              <button key={d} type="button" onClick={() => setI(d)} aria-label={`Show testimonial ${d + 1}`} aria-current={d === i} className="flex h-11 cursor-pointer items-center">
+                <span className={`block h-1.5 rounded-full transition-all duration-300 ${d === i ? 'w-10 bg-primary' : 'w-6 bg-white/30'}`} />
+              </button>
+            ))}
+          </div>
+          <button type="button" onClick={() => setI((i + 1) % n)} className="flex h-11 w-11 cursor-pointer items-center justify-center rounded-full border border-white/30 text-white hover:bg-white/10" aria-label="Next testimonial"><ChevronRight className="h-5 w-5" /></button>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+export function Dentist() {
+  return (
+    <section id="dentist" className="py-20 lg:py-28">
+      <div className="container-x grid items-center gap-12 lg:grid-cols-[1fr_1.2fr]">
+        <Reveal className="relative">
+          <div className="absolute -left-4 -top-4 h-full w-full rounded-3xl bg-primary-light" aria-hidden="true" />
+          <Photo src="doctor.jpg" alt={`${clinic.doctor}, dentist at ${clinic.name}`} label="Add doctor.jpg" className="relative aspect-[4/5] w-full rounded-3xl" />
+        </Reveal>
+        <Reveal delay={0.1}>
+          <p className="eyebrow">Meet Your Dentist</p>
+          <h2 className="mt-3 text-3xl font-bold text-navy sm:text-4xl lg:text-[44px]">{clinic.doctor}</h2>
+          <p className="mt-1 text-lg font-semibold text-primary">Dental Surgeon · {clinic.name}</p>
+          <p className="mt-6 text-lg leading-relaxed text-muted">
+            {clinic.doctor} leads the clinic with a simple approach: listen carefully, explain every option clearly and treat each patient gently. Whether it is a routine check-up or a complete smile makeover, you are in caring, experienced hands.
+          </p>
+          <h3 className="mt-8 text-lg font-bold text-navy">Areas of Care</h3>
+          <ul className="mt-4 grid gap-3 sm:grid-cols-2">
+            {doctorFocus.map((f) => (
+              <li key={f} className="flex items-center gap-3 rounded-xl bg-soft px-4 py-3 text-ink">
+                <CircleCheck className="h-5 w-5 shrink-0 fill-primary text-white" aria-hidden="true" /> {f}
+              </li>
+            ))}
+          </ul>
+          <div className="mt-8 flex flex-wrap gap-4">
+            <a href="#appointment" className="btn-primary">Book with {clinic.doctor}</a>
+            <a href={telLink} className="btn-ghost"><Phone className="h-4 w-4" aria-hidden="true" /> {clinic.phoneDisplay}</a>
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  )
+}
+
+export function Faq() {
+  const [open, setOpen] = useState(0)
+  return (
+    <section id="faq" className="bg-navy py-20 lg:py-28">
+      <div className="container-x">
+        <SectionHeading eyebrow="FAQs" title="Dental Care FAQs:" highlight="Your Questions Answered" light />
+        <div className="mt-12 grid gap-8 lg:grid-cols-[1.6fr_1fr]">
+          <div className="space-y-4">
+            {faqs.map((f, i) => {
+              const isOpen = open === i
+              return (
+                <Reveal key={f.q} delay={i * 0.04}>
+                  <div className={`overflow-hidden rounded-xl transition-colors duration-200 ${isOpen ? 'bg-primary text-white' : 'bg-white text-navy'}`}>
+                    <h3>
+                      <button type="button" onClick={() => setOpen(isOpen ? -1 : i)} aria-expanded={isOpen} aria-controls={`faq-${i}`} className="flex min-h-[56px] w-full cursor-pointer items-center justify-between gap-4 px-6 py-4 text-left text-base font-semibold sm:text-lg">
+                        {f.q}
+                        {isOpen ? <Minus className="h-5 w-5 shrink-0" aria-hidden="true" /> : <Plus className="h-5 w-5 shrink-0 text-primary" aria-hidden="true" />}
+                      </button>
+                    </h3>
+                    <AnimatePresence initial={false}>
+                      {isOpen && (
+                        <motion.div id={`faq-${i}`} initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.25 }}>
+                          <p className="px-6 pb-5 leading-relaxed text-white/90">{f.a}</p>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                </Reveal>
+              )
+            })}
+          </div>
+          <Reveal delay={0.1} className="space-y-6">
+            <div className="rounded-2xl bg-primary p-8 text-center text-white">
+              <span className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-white text-primary"><MessagesSquare className="h-7 w-7" aria-hidden="true" /></span>
+              <h3 className="mt-5 text-2xl font-bold">Have a different question?</h3>
+              <p className="mt-2 text-white/85">Message us on WhatsApp and we will get back to you quickly.</p>
+              <a href={whatsappLink('Hello, I have a question about dental treatment.')} target="_blank" rel="noreferrer" className="btn-white mt-6"><MessageCircle className="h-4 w-4" aria-hidden="true" /> Chat on WhatsApp</a>
+            </div>
+            <a href={telLink} className="flex items-center gap-4 rounded-2xl bg-white p-6 transition-shadow hover:shadow-xl">
+              <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-primary-light text-primary"><Phone className="h-6 w-6" aria-hidden="true" /></span>
+              <span><span className="block text-sm text-muted">Call the clinic</span><span className="block text-xl font-bold text-navy">{clinic.phoneDisplay}</span></span>
+            </a>
+          </Reveal>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+export function Tips() {
+  return (
+    <section className="py-20 lg:py-28">
+      <div className="container-x">
+        <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
+          <SectionHeading eyebrow="Dental Care Tips" title="Simple Habits for" highlight="Healthy Teeth" center={false} />
+          <Reveal><a href="#appointment" className="btn-primary">Book a Check-Up</a></Reveal>
+        </div>
+        <div className="mt-12 grid gap-8 md:grid-cols-3">
+          {tips.map((t, i) => (
+            <Reveal key={t.title} delay={i * 0.08}>
+              <article className="h-full overflow-hidden rounded-2xl bg-white shadow-card">
+                <div className="relative">
+                  <Photo src={t.image} alt={t.title} label={t.tag} className="aspect-[16/10] w-full" />
+                  <span className="absolute left-4 top-4 rounded-full bg-primary px-3 py-1 text-xs font-semibold text-white">{t.tag}</span>
+                </div>
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-navy">{t.title}</h3>
+                  <p className="mt-2 leading-relaxed text-muted">{t.text}</p>
+                </div>
+              </article>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+export function CallToAction() {
+  return (
+    <section className="pb-20 lg:pb-28">
+      <div className="container-x">
+        <Reveal className="relative overflow-hidden rounded-3xl bg-primary px-6 py-14 text-center text-white sm:px-12">
+          <div className="absolute -left-16 -top-16 h-56 w-56 rounded-full bg-white/10" aria-hidden="true" />
+          <div className="absolute -bottom-20 -right-10 h-72 w-72 rounded-full bg-white/10" aria-hidden="true" />
+          <p className="eyebrow-light relative">Visit Us</p>
+          <h2 className="relative mx-auto mt-3 max-w-2xl text-3xl font-bold sm:text-4xl">Ready for a healthier, brighter smile?</h2>
+          <p className="relative mx-auto mt-4 flex max-w-xl items-start justify-center gap-2 text-white/90"><MapPin className="mt-1 h-5 w-5 shrink-0" aria-hidden="true" /> {clinic.addressLines.join(', ')}</p>
+          <div className="relative mt-8 flex flex-wrap justify-center gap-4">
+            <a href={telLink} className="btn-white"><Phone className="h-4 w-4" aria-hidden="true" /> Call {clinic.phoneDisplay}</a>
+            <a href={mapsLink} target="_blank" rel="noreferrer" className="btn border border-white text-white hover:bg-white/10">Get Directions <ArrowRight className="h-4 w-4" aria-hidden="true" /></a>
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  )
+}
