@@ -1,25 +1,15 @@
-import { useState } from 'react'
 import { ArrowRight, ArrowUpRight } from 'lucide-react'
 import { journeys, services, steps } from '../data'
 import { Icon, Photo, Reveal, SectionHeading } from './ui'
 
 export function Services() {
-  const [showAll, setShowAll] = useState(false)
-  const list = showAll ? services : services.slice(0, 6)
   return (
     <section id="services" className="bg-soft py-20 lg:py-28">
       <div className="container-x">
-        <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
-          <SectionHeading eyebrow="Our Services" title="A Wide Range of Services" highlight="for Your Best Smile" center={false} />
-          <Reveal>
-            <button type="button" onClick={() => setShowAll((s) => !s)} className="btn-primary">
-              {showAll ? 'Show Fewer' : 'Explore All Services'}
-            </button>
-          </Reveal>
-        </div>
+        <SectionHeading eyebrow="Our Services" title="A Wide Range of Services" highlight="for Your Best Smile" center={false} />
 
         <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {list.map((s, i) => (
+          {services.map((s, i) => (
             <Reveal key={s.title} delay={(i % 3) * 0.08}>
               <article className="group h-full rounded-2xl bg-white p-3 shadow-card transition-shadow duration-200 hover:shadow-xl">
                 <div className="relative">
