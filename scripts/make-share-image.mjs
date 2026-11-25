@@ -34,7 +34,7 @@ const card = `<!doctype html><html><head><meta charset="utf-8">
   h1{margin-top:56px;font-size:58px;line-height:1.1;font-weight:800;color:${c.navy}} h1 span{color:${c.primary}}
   p{margin-top:24px;font-size:26px;color:#475569}
   .btn{display:inline-block;margin-top:40px;padding:18px 38px;border-radius:40px;background:${c.primary};color:#fff;font-size:28px;font-weight:700}
-  img{position:absolute;right:50px;top:50px;width:530px;height:530px;object-fit:cover;border-radius:40px;border:8px solid #fff;box-shadow:0 10px 30px -12px rgba(11,26,74,.25)}
+  img{position:absolute;right:20px;bottom:0;height:620px;mix-blend-mode:multiply}
 </style></head><body>
 <div class="bar"></div>
 <img src="${hero}">

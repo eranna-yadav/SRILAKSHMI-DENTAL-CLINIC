@@ -37,7 +37,7 @@ Put the clinic's photos in `public/images/` using **exactly these names** (`.web
 
 | File | Where it appears | Good size / shape |
 |---|---|---|
-| `hero.webp` | Top of the page (rounded photo card) | Square, ~900 × 900 px, any background |
+| `hero.webp` | Top of the page | Portrait on a white background, ~900 px wide |
 | `about-1.webp` | About, big tooth | Portrait on a white background |
 | `about-2.webp` | About, small tooth | Close-up smile |
 | `doctor.webp` | Meet Your Dentist | Portrait, 4:5 |
