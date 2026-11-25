@@ -27,15 +27,14 @@ export default function Hero() {
         <motion.div className="relative mx-auto w-full max-w-md lg:max-w-none" initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.8, delay: 0.15 }}>
           <Sparkle className="absolute left-2 top-6 z-10 h-8 w-8 text-primary" />
           <Sparkle className="absolute right-4 top-12 z-10 h-5 w-5 text-primary/60" />
-          <div className="relative isolate mx-auto w-[92%] bg-soft">
+          <div className="relative mx-auto w-[88%] overflow-hidden rounded-[2.5rem] shadow-card ring-8 ring-white">
             <img
               src="/images/hero.webp"
               alt={text.hero.imageAlt}
               width="900"
-              height="925"
+              height="900"
               fetchpriority="high"
-              className="w-full mix-blend-multiply"
-              style={{ WebkitMaskImage: 'linear-gradient(to right, transparent, #000 6%, #000 94%, transparent), linear-gradient(to bottom, transparent, #000 6%)', WebkitMaskComposite: 'source-in', maskImage: 'linear-gradient(to right, transparent, #000 6%, #000 94%, transparent), linear-gradient(to bottom, transparent, #000 6%)', maskComposite: 'intersect' }}
+              className="aspect-square w-full object-cover"
             />
           </div>
           <motion.div className="absolute -left-2 bottom-16 z-10 flex items-center gap-3 rounded-2xl bg-white p-3 pr-5 shadow-card sm:left-0" animate={{ y: [0, -8, 0] }} transition={{ duration: 4, repeat: Infinity }}>
