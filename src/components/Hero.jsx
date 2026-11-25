@@ -32,7 +32,7 @@ export default function Hero() {
               src="/images/hero.webp"
               alt={text.hero.imageAlt}
               width="900"
-              height="900"
+              height="980"
               fetchpriority="high"
               className="w-full mix-blend-multiply"
               style={{ WebkitMaskImage: 'linear-gradient(to right, transparent, #000 6%, #000 94%, transparent), linear-gradient(to bottom, transparent, #000 6%)', WebkitMaskComposite: 'source-in', maskImage: 'linear-gradient(to right, transparent, #000 6%, #000 94%, transparent), linear-gradient(to bottom, transparent, #000 6%)', maskComposite: 'intersect' }}
