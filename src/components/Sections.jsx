@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { AnimatePresence, animate, motion, useInView, useReducedMotion } from 'framer-motion'
 import { ArrowRight, ChevronLeft, ChevronRight, ChevronsLeftRight, CircleCheck, MapPin, MessageCircle, MessagesSquare, Minus, Phone, Plus, Quote, Star } from 'lucide-react'
-import { clinic, doctorFocus, faqs, mapsLink, telLink, testimonials, tips, whatsappLink } from '../data'
+import { clinic, doctorFocus, faqs, mapsLink, telLink, testimonials, tips, whatsappLink, text } from '../data'
 import { Photo, Reveal, SectionHeading } from './ui'
 
 export function BeforeAfter() {
@@ -26,7 +26,7 @@ export function BeforeAfter() {
   return (
     <section className="py-20 lg:py-28">
       <div className="container-x">
-        <SectionHeading eyebrow="Before & After" title="See the" highlight="Difference" />
+        <SectionHeading eyebrow={text.beforeAfter.eyebrow} title={text.beforeAfter.title} highlight={text.beforeAfter.highlight} />
         <div ref={ref} className="relative mt-12 aspect-[4/3] w-full select-none overflow-hidden rounded-3xl bg-soft sm:aspect-[16/9]">
           {/* After (full, underneath) */}
           <Photo src="after.webp" alt="Bright white smile after teeth whitening" className="absolute inset-0 h-full w-full object-[50%_58%]" />
@@ -55,7 +55,7 @@ export function BeforeAfter() {
           />
         </div>
         <p className="mt-4 text-center text-sm text-muted">Drag the slider to compare</p>
-        <Reveal className="mt-8 text-center"><a href="#appointment" className="btn-primary">Get Your Consultation</a></Reveal>
+        <Reveal className="mt-8 text-center"><a href="#appointment" className="btn-primary">{text.beforeAfter.button}</a></Reveal>
       </div>
     </section>
   )
@@ -68,7 +68,7 @@ export function Testimonials() {
   return (
     <section className="bg-navy py-20 lg:py-28">
       <div className="container-x">
-        <SectionHeading eyebrow="Testimonials" title="What Our" highlight="Patients" after="Have to Say" light />
+        <SectionHeading eyebrow={text.testimonials.eyebrow} title={text.testimonials.title} highlight={text.testimonials.highlight} after={text.testimonials.after} light />
         <div className="mt-12 grid gap-6 md:grid-cols-2">
           <AnimatePresence mode="popLayout" initial={false}>
             {pair.map((t, k) => (
@@ -110,7 +110,7 @@ export function Dentist() {
   return (
     <section id="dentist" className="py-20 lg:py-28">
       <div className="container-x">
-      <SectionHeading eyebrow="Meet Your Dentist" title="Your Smile in" highlight="Caring Hands" />
+      <SectionHeading eyebrow={text.dentist.eyebrow} title={text.dentist.title} highlight={text.dentist.highlight} />
       <div className="mt-14 grid items-center gap-12 lg:grid-cols-[1fr_1.2fr]">
         <Reveal className="relative">
           <div className="absolute -left-4 -top-4 h-full w-full rounded-3xl bg-primary-light" aria-hidden="true" />
@@ -118,9 +118,9 @@ export function Dentist() {
         </Reveal>
         <Reveal delay={0.1}>
           <h3 className="text-3xl font-bold text-navy sm:text-4xl">{clinic.doctor}</h3>
-          <p className="mt-1 text-lg font-semibold text-primary">Dental Surgeon · {clinic.name}</p>
+          <p className="mt-1 text-lg font-semibold text-primary">{clinic.doctorRole} · {clinic.name}</p>
           <p className="mt-6 text-lg leading-relaxed text-muted">
-            {clinic.doctor} leads the clinic with a simple approach: listen carefully, explain every option clearly and treat each patient gently. Whether it is a routine check-up or a complete smile makeover, you are in caring, experienced hands.
+            {text.dentist.bio}
           </p>
           <h3 className="mt-8 text-lg font-bold text-navy">Areas of Care</h3>
           <ul className="mt-4 grid gap-3 sm:grid-cols-2">
@@ -146,7 +146,7 @@ export function Faq() {
   return (
     <section id="faq" className="bg-navy py-20 lg:py-28">
       <div className="container-x">
-        <SectionHeading eyebrow="FAQs" title="Dental Care FAQs:" highlight="Your Questions Answered" light />
+        <SectionHeading eyebrow={text.faq.eyebrow} title={text.faq.title} highlight={text.faq.highlight} light />
         <div className="mt-12 grid gap-8 lg:grid-cols-[1.6fr_1fr]">
           <div className="space-y-4">
             {faqs.map((f, i) => {
@@ -175,8 +175,8 @@ export function Faq() {
           <Reveal delay={0.1} className="space-y-6">
             <div className="rounded-2xl bg-primary p-8 text-center text-white">
               <span className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-white text-primary"><MessagesSquare className="h-7 w-7" aria-hidden="true" /></span>
-              <h3 className="mt-5 text-2xl font-bold">Have a different question?</h3>
-              <p className="mt-2 text-white/85">Message us on WhatsApp and we will get back to you quickly.</p>
+              <h3 className="mt-5 text-2xl font-bold">{text.faq.cardTitle}</h3>
+              <p className="mt-2 text-white/85">{text.faq.cardText}</p>
               <a href={whatsappLink('Hello, I have a question about dental treatment.')} target="_blank" rel="noreferrer" className="btn-white mt-6"><MessageCircle className="h-4 w-4" aria-hidden="true" /> Chat on WhatsApp</a>
             </div>
             <a href={telLink} className="flex items-center gap-4 rounded-2xl bg-white p-6 transition-shadow hover:shadow-xl">
@@ -194,7 +194,7 @@ export function Tips() {
   return (
     <section className="py-20 lg:py-28">
       <div className="container-x">
-        <SectionHeading eyebrow="Dental Care Tips" title="Simple Habits for" highlight="Healthy Teeth" />
+        <SectionHeading eyebrow={text.tips.eyebrow} title={text.tips.title} highlight={text.tips.highlight} />
         <div className="mt-12 grid gap-8 md:grid-cols-3">
           {tips.map((t, i) => (
             <Reveal key={t.title} delay={i * 0.08}>
@@ -211,7 +211,7 @@ export function Tips() {
             </Reveal>
           ))}
         </div>
-        <Reveal className="mt-12 text-center"><a href="#appointment" className="btn-primary">Book a Check-Up</a></Reveal>
+        <Reveal className="mt-12 text-center"><a href="#appointment" className="btn-primary">{text.tips.button}</a></Reveal>
       </div>
     </section>
   )
@@ -224,8 +224,8 @@ export function CallToAction() {
         <Reveal className="relative overflow-hidden rounded-3xl bg-primary px-6 py-14 text-center text-white sm:px-12">
           <div className="absolute -left-16 -top-16 h-56 w-56 rounded-full bg-white/10" aria-hidden="true" />
           <div className="absolute -bottom-20 -right-10 h-72 w-72 rounded-full bg-white/10" aria-hidden="true" />
-          <p className="eyebrow relative text-white">Visit Us</p>
-          <h2 className="relative mx-auto mt-3 max-w-2xl text-3xl font-bold sm:text-4xl">Ready for a healthier, brighter smile?</h2>
+          <p className="eyebrow relative text-white">{text.cta.eyebrow}</p>
+          <h2 className="relative mx-auto mt-3 max-w-2xl text-3xl font-bold sm:text-4xl">{text.cta.title}</h2>
           <p className="relative mx-auto mt-4 flex max-w-xl items-start justify-center gap-2 text-white/90"><MapPin className="mt-1 h-5 w-5 shrink-0" aria-hidden="true" /> {clinic.addressLines.join(', ')}</p>
           <div className="relative mt-8 flex flex-wrap justify-center gap-4">
             <a href={telLink} className="btn-white"><Phone className="h-4 w-4" aria-hidden="true" /> Call {clinic.phoneDisplay}</a>

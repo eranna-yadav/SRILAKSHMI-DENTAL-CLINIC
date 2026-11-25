@@ -1,12 +1,12 @@
 import { ArrowRight, ArrowUpRight } from 'lucide-react'
-import { journeys, services, steps } from '../data'
+import { journeys, services, steps, text } from '../data'
 import { Icon, Photo, Reveal, SectionHeading } from './ui'
 
 export function Services() {
   return (
     <section id="services" className="bg-soft py-20 lg:py-28">
       <div className="container-x">
-        <SectionHeading eyebrow="Our Services" title="A Wide Range of Services" highlight="for Your Best Smile" />
+        <SectionHeading eyebrow={text.services.eyebrow} title={text.services.title} highlight={text.services.highlight} />
 
         <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {services.map((s, i) => (
@@ -38,7 +38,7 @@ export function Journeys() {
   return (
     <section className="bg-navy py-20 lg:py-28">
       <div className="container-x">
-        <SectionHeading eyebrow="Treatment Journeys" title="Your Path to a" highlight="Healthier, Happier Smile" light />
+        <SectionHeading eyebrow={text.journeys.eyebrow} title={text.journeys.title} highlight={text.journeys.highlight} light />
         <div className="mt-12 grid gap-8 md:grid-cols-2">
           {journeys.map((j, i) => (
             <Reveal key={j.title} delay={i * 0.1}>
@@ -62,7 +62,7 @@ export function Journeys() {
             </Reveal>
           ))}
         </div>
-        <Reveal className="mt-12 text-center"><a href="#appointment" className="btn-primary">Start Your Journey</a></Reveal>
+        <Reveal className="mt-12 text-center"><a href="#appointment" className="btn-primary">{text.journeys.button}</a></Reveal>
       </div>
     </section>
   )
@@ -72,7 +72,7 @@ export function Steps() {
   return (
     <section className="py-20 lg:py-28">
       <div className="container-x">
-        <SectionHeading eyebrow="How It Works" title="The Path to" highlight="Your Perfect Smile" />
+        <SectionHeading eyebrow={text.steps.eyebrow} title={text.steps.title} highlight={text.steps.highlight} />
         <div className="relative mt-16">
         <div className="absolute left-[12.5%] right-[12.5%] top-12 hidden border-t-2 border-dashed border-primary/30 lg:block" aria-hidden="true" />
         <ol className="relative grid gap-12 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">

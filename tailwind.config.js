@@ -1,11 +1,15 @@
+import config from './site.config.js'
+
+const c = config.brand.colors
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ['./index.html', './src/**/*.{js,jsx}'],
   theme: {
     extend: {
       colors: {
-        primary: { DEFAULT: '#1E3FF5', dark: '#1430CC', light: '#E8ECFF' },
-        navy: { DEFAULT: '#0B1A4A', light: '#13265F' },
+        primary: { DEFAULT: c.primary, dark: c.primaryDark, light: c.primaryLight },
+        navy: { DEFAULT: c.navy, light: c.navyLight },
         ink: '#0F172A',
         muted: '#475569',
         soft: '#F4F6FB',

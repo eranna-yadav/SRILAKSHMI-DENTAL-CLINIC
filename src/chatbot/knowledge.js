@@ -43,7 +43,7 @@ const intents = [
   },
   {
     id: 'location',
-    words: ['where', 'address', 'location', 'located', 'directions', 'direction', 'map', 'reach', 'route', 'landmark', 'near', 'park'],
+    words: ['where', 'address', 'location', 'located', 'directions', 'direction', 'map', 'reach', 'route', 'landmark', 'near', ...tokenize(clinic.shortArea)],
     reply: () => ({ text: `We are at:\n${clinic.addressLines.join(',\n')}`, actions: [A.map, A.call] }),
   },
   {
@@ -61,7 +61,7 @@ const intents = [
   },
   {
     id: 'doctor',
-    words: ['doctor', 'dentist', 'dr', 'somshekhar', 'somashekhar', 'somshekar', 'who', 'qualification', 'experience', 'surgeon'],
+    words: ['doctor', 'dentist', 'dr', ...tokenize(clinic.doctor), 'who', 'qualification', 'experience', 'surgeon'],
     reply: () => ({
       text: `${clinic.doctor} is the dental surgeon at ${clinic.name}. Areas of care:\n${doctorFocus.map((f) => `• ${f}`).join('\n')}`,
       actions: [{ label: 'Meet the dentist', href: '#dentist' }, A.book],

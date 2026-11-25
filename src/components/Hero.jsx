@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import { ArrowRight, Calendar, Clock, Phone, ShieldCheck, Star, User } from 'lucide-react'
-import { clinic, telLink } from '../data'
+import { clinic, telLink, text } from '../data'
 import { Sparkle } from './ui'
 
 export default function Hero() {
@@ -9,14 +9,14 @@ export default function Hero() {
       <div className="container-x grid items-center gap-10 pb-28 pt-12 lg:grid-cols-2 lg:pb-36 lg:pt-16">
         <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
           <span className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-semibold text-navy shadow-card">
-            <ShieldCheck className="h-4 w-4 text-primary" aria-hidden="true" /> Trusted Dental Care in Hassan
+            <ShieldCheck className="h-4 w-4 text-primary" aria-hidden="true" /> {text.hero.badge}
           </span>
           <h1 className="mt-6 text-4xl font-extrabold leading-[1.1] text-navy sm:text-5xl lg:text-6xl">
-            Your <span className="text-primary">Best Dental</span>
-            <br /> Experience Awaits
+            {text.hero.titleStart} <span className="text-primary">{text.hero.titleHighlight}</span>
+            <br /> {text.hero.titleEnd}
           </h1>
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted">
-            Gentle, modern dentistry for the whole family at {clinic.name}. From routine check-ups to implants and smile makeovers, {clinic.doctor} and team take care of every smile.
+            {text.hero.intro}
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-4">
             <a href="#appointment" className="btn-primary">Book an Appointment <ArrowRight className="h-4 w-4" aria-hidden="true" /></a>
@@ -30,7 +30,7 @@ export default function Hero() {
           <div className="relative isolate mx-auto w-[92%] bg-soft">
             <img
               src="/images/hero.webp"
-              alt="Smiling dental professional at Srilakshmi Dental Clinic"
+              alt={text.hero.imageAlt}
               width="900"
               height="925"
               fetchpriority="high"
@@ -40,11 +40,11 @@ export default function Hero() {
           </div>
           <motion.div className="absolute -left-2 bottom-16 z-10 flex items-center gap-3 rounded-2xl bg-white p-3 pr-5 shadow-card sm:left-0" animate={{ y: [0, -8, 0] }} transition={{ duration: 4, repeat: Infinity }}>
             <span className="flex h-11 w-11 items-center justify-center rounded-full bg-primary-light text-primary"><Star className="h-5 w-5 fill-current" aria-hidden="true" /></span>
-            <span className="text-sm"><strong className="block text-navy">Family Dentistry</strong><span className="text-muted">Kids to seniors</span></span>
+            <span className="text-sm"><strong className="block text-navy">{text.hero.cards[0].title}</strong><span className="text-muted">{text.hero.cards[0].text}</span></span>
           </motion.div>
           <motion.div className="absolute -right-2 top-24 z-10 hidden rounded-2xl bg-white p-4 shadow-card sm:right-0 sm:block" animate={{ y: [0, 8, 0] }} transition={{ duration: 5, repeat: Infinity }}>
-            <strong className="block text-navy">Gentle Care</strong>
-            <span className="text-sm text-muted">Comfortable treatment</span>
+            <strong className="block text-navy">{text.hero.cards[1].title}</strong>
+            <span className="text-sm text-muted">{text.hero.cards[1].text}</span>
           </motion.div>
         </motion.div>
       </div>

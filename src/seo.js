@@ -1,9 +1,10 @@
-// SEO settings. If you connect a custom domain, change siteUrl.
-import { clinic, faqs, services } from './data.js'
+// Structured data for Google, built from site.config.js.
+import { clinic, faqs, seo, services, siteUrl } from './data.js'
 
-export const siteUrl = 'https://srilakshmi-dental-clinic.vercel.app'
+export { siteUrl }
 
 export function structuredData() {
+  const a = clinic.address
   const dentist = {
     '@context': 'https://schema.org',
     '@type': 'Dentist',
@@ -13,28 +14,24 @@ export function structuredData() {
     image: `${siteUrl}/og-image.jpg`,
     logo: `${siteUrl}/favicon.svg`,
     telephone: clinic.phoneTel,
-    priceRange: '₹₹',
+    priceRange: seo.priceRange,
     address: {
       '@type': 'PostalAddress',
-      streetAddress: 'Ground floor, Park Rd, opp. to Sanskrutha Bhavana, Rangoli Halla',
-      addressLocality: 'Hassan',
-      addressRegion: 'Karnataka',
-      postalCode: '573201',
-      addressCountry: 'IN',
+      streetAddress: a.street,
+      addressLocality: a.city,
+      addressRegion: a.region,
+      postalCode: a.postalCode,
+      addressCountry: a.country,
     },
-    areaServed: { '@type': 'City', name: 'Hassan' },
+    areaServed: { '@type': 'City', name: clinic.city },
     hasMap: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(clinic.mapQuery)}`,
-    employee: { '@type': 'Person', name: clinic.doctor, jobTitle: 'Dental Surgeon' },
+    employee: { '@type': 'Person', name: clinic.doctor, jobTitle: clinic.doctorRole },
     availableService: services.map((s) => ({ '@type': 'MedicalProcedure', name: s.title, description: s.text })),
   }
   const faq = {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
-    mainEntity: faqs.map((f) => ({
-      '@type': 'Question',
-      name: f.q,
-      acceptedAnswer: { '@type': 'Answer', text: f.a },
-    })),
+    mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
   }
   return [dentist, faq]
 }

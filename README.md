@@ -1,23 +1,25 @@
 # Srilakshmi Dental Clinic — Website
 
-React + Vite + Tailwind CSS + Framer Motion.
+React + Vite + Tailwind CSS + Framer Motion. Live at https://srilakshmi-dental-clinic.vercel.app
 
 ```bash
 npm install
-npm run dev      # local preview
-npm run build    # production build in dist/
+npm run dev           # local preview
+npm run build         # production build in dist/ (prerendered for SEO)
+npm run share-image   # regenerate the link-preview image and app icon
 ```
 
 ## Editing content
-All clinic details (phone, address, hours, services, FAQs, testimonials) are in `src/data.js`.
+All clinic details, page text, services, FAQs, colours and SEO text are in **`site.config.js`**.
+Photos are in `public/images/`.
+
+**Reusing this site for another clinic:** see [TEMPLATE.md](TEMPLATE.md).
 
 ## Before going live
-- **Clinic hours** in `src/data.js` are placeholders — confirm the real timings.
-- **Testimonials** in `src/data.js` are placeholders — replace with real patient reviews.
-- **Photos**: add images to `public/images/` with these names (placeholders show until then):
-  `hero.jpg`, `about-1.jpg`, `about-2.jpg`, `doctor.jpg`, `before.jpg`, `after.jpg`,
-  `service-general.jpg`, `service-implant.jpg`, `service-whitening.jpg`, `service-rootcanal.jpg`,
-  `service-ortho.jpg`, `service-extraction.jpg`, `service-crowns.jpg`, `service-makeover.jpg`, `service-kids.jpg`,
-  `journey-whitening.jpg`, `journey-braces.jpg`, `tip-brushing.jpg`, `tip-sensitivity.jpg`, `tip-kids.jpg`.
+- **Clinic hours** in `site.config.js` are placeholders — confirm the real timings.
+- **Testimonials** in `site.config.js` are placeholders — replace with real patient reviews.
 
-The booking form sends the patient's details to the clinic's WhatsApp (94485 80245).
+## Features
+- Booking form that sends details to the clinic's WhatsApp
+- Floating WhatsApp button and a chat assistant that answers from the site's own content (`src/chatbot/`)
+- SEO: prerendered HTML, meta and social tags, Dentist and FAQ structured data, sitemap and robots.txt

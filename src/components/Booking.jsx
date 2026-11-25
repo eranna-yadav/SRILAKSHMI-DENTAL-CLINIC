@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { CircleCheck, Clock, MessageCircle, Phone } from 'lucide-react'
-import { clinic, services, telLink, whatsappLink } from '../data'
+import { clinic, services, telLink, whatsappLink, text } from '../data'
 import { Reveal, SectionHeading } from './ui'
 
 const empty = { name: '', phone: '', treatment: '', date: '', time: '', notes: '' }
@@ -42,8 +42,8 @@ export default function Booking() {
   return (
     <section id="appointment" className="bg-soft py-20 lg:py-28">
       <div className="container-x">
-      <SectionHeading eyebrow="Book an Appointment" title="Easy Online Booking" highlight="for Your Dental Visit" />
-      <p className="mx-auto mt-4 max-w-xl text-center text-muted">Fill in your details and send them to us on WhatsApp. We will call you back to confirm your appointment time.</p>
+      <SectionHeading eyebrow={text.booking.eyebrow} title={text.booking.title} highlight={text.booking.highlight} />
+      <p className="mx-auto mt-4 max-w-xl text-center text-muted">{text.booking.intro}</p>
       <div className="mt-12 grid gap-12 lg:grid-cols-[1.4fr_1fr]">
         <Reveal>
           <form onSubmit={submit} noValidate className="grid gap-5 sm:grid-cols-2">

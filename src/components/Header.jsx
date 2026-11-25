@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Clock, MapPin, Menu, MessageCircle, Phone, X } from 'lucide-react'
-import { clinic, navLinks, telLink, whatsappLink, mapsLink } from '../data'
+import { clinic, navLinks, telLink, whatsappLink, mapsLink, brand } from '../data'
 import { ToothIcon } from './ui'
 
 export function Logo({ light = false }) {
@@ -11,8 +11,8 @@ export function Logo({ light = false }) {
         <ToothIcon className="h-6 w-6" />
       </span>
       <span className="leading-tight">
-        <span className={`block text-lg font-extrabold tracking-tight ${light ? 'text-white' : 'text-navy'}`}>SRILAKSHMI</span>
-        <span className={`block text-[11px] font-semibold uppercase tracking-[0.2em] ${light ? 'text-white/70' : 'text-primary'}`}>Dental Clinic</span>
+        <span className={`block text-lg font-extrabold tracking-tight ${light ? 'text-white' : 'text-navy'}`}>{brand.logoTop}</span>
+        <span className={`block text-[11px] font-semibold uppercase tracking-[0.2em] ${light ? 'text-white/70' : 'text-primary'}`}>{brand.logoBottom}</span>
       </span>
     </a>
   )
@@ -39,7 +39,7 @@ export default function Header() {
         <div className="container-x flex h-11 items-center justify-between text-sm">
           <div className="flex items-center gap-6">
             <a href={telLink} className="flex items-center gap-2 hover:underline"><Phone className="h-4 w-4" aria-hidden="true" /> {clinic.phoneDisplay}</a>
-            <a href={mapsLink} target="_blank" rel="noreferrer" className="flex items-center gap-2 hover:underline"><MapPin className="h-4 w-4" aria-hidden="true" /> Park Road, Hassan</a>
+            <a href={mapsLink} target="_blank" rel="noreferrer" className="flex items-center gap-2 hover:underline"><MapPin className="h-4 w-4" aria-hidden="true" /> {clinic.shortArea}</a>
           </div>
           <div className="flex items-center gap-6">
             <span className="flex items-center gap-2"><Clock className="h-4 w-4" aria-hidden="true" /> {clinic.hours[0].day}: {clinic.hours[0].time}</span>

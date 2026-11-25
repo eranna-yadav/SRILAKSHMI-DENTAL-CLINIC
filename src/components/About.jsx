@@ -1,28 +1,24 @@
 import { ArrowUpRight, CircleCheck } from 'lucide-react'
-import { clinic, marqueeItems } from '../data'
+import { clinic, marqueeItems, text } from '../data'
 import { Photo, Reveal, SectionHeading, Sparkle, ToothIcon } from './ui'
 
 export function About() {
-  const points = [
-    'Complete dental care under one roof',
-    'Sterilised instruments and modern equipment',
-    'Clear treatment plans with honest pricing',
-  ]
+  const points = text.about.points
   return (
     <section id="about" className="py-20 lg:py-28">
       <div className="container-x">
-      <SectionHeading eyebrow="About Us" title="Expert, Gentle Care" highlight="for Every Smile" />
+      <SectionHeading eyebrow={text.about.eyebrow} title={text.about.title} highlight={text.about.highlight} />
       <div className="mt-14 grid items-center gap-14 lg:grid-cols-2">
         <Reveal className="relative mx-auto w-full max-w-lg">
           <Sparkle className="absolute -left-2 top-4 h-8 w-8 text-primary" />
           <Sparkle className="absolute left-12 top-14 h-14 w-14 text-primary" />
           <Sparkle className="absolute left-2 top-28 h-4 w-4 text-primary" />
           <div className="tooth-mask isolate ml-auto aspect-[1/1.05] w-[78%] bg-primary-light">
-            <Photo src="about-1.webp" alt="Smiling dental professional at Srilakshmi Dental Clinic" className="h-full w-full !object-contain object-bottom pt-[15%] mix-blend-multiply" />
+            <Photo src="about-1.webp" alt={text.about.imageAlt} className="h-full w-full !object-contain object-bottom pt-[15%] mix-blend-multiply" />
           </div>
           <div className="absolute bottom-0 left-0 w-[44%] rounded-[40%] bg-white p-2">
             <div className="tooth-mask isolate aspect-[1/1.05] w-full bg-primary-light">
-              <Photo src="about-2.webp" alt="Healthy, bright smile with a dental mirror" className="h-full w-full object-[35%_50%] mix-blend-multiply" />
+              <Photo src="about-2.webp" alt={text.about.smallImageAlt} className="h-full w-full object-[35%_50%] mix-blend-multiply" />
             </div>
           </div>
           <a href="#contact" aria-label="Contact us" className="absolute bottom-2 left-[46%] flex h-28 w-28 cursor-pointer items-center justify-center rounded-full bg-navy ring-8 ring-white transition-transform duration-200 hover:scale-105">
@@ -36,7 +32,7 @@ export function About() {
 
         <Reveal delay={0.1}>
           <p className="text-lg leading-relaxed text-muted">
-            {clinic.name} is a family dental clinic on Park Road, Hassan, led by {clinic.doctor}. We focus on comfortable treatment, clear explanations and results that last — so every visit leaves you smiling.
+            {text.about.body}
           </p>
           <ul className="mt-6 space-y-3">
             {points.map((p) => (

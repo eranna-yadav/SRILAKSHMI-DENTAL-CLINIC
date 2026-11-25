@@ -1,5 +1,5 @@
 import { Clock, MapPin, MessageCircle, Phone } from 'lucide-react'
-import { clinic, mapsEmbed, mapsLink, navLinks, services, telLink, whatsappLink } from '../data'
+import { clinic, mapsEmbed, mapsLink, navLinks, services, telLink, whatsappLink, text } from '../data'
 import { Logo } from './Header'
 
 export default function Footer() {
@@ -8,7 +8,7 @@ export default function Footer() {
       <div className="container-x grid gap-10 py-16 md:grid-cols-2 lg:grid-cols-4">
         <div>
           <Logo light />
-          <p className="mt-5 leading-relaxed">Complete, caring dental treatment for the whole family in Hassan, led by {clinic.doctor}.</p>
+          <p className="mt-5 leading-relaxed">{text.footer.about}</p>
           <a href={whatsappLink()} target="_blank" rel="noreferrer" className="mt-6 inline-flex min-h-[44px] items-center gap-2 rounded-full bg-white/10 px-5 font-semibold text-white hover:bg-white/20">
             <MessageCircle className="h-4 w-4" aria-hidden="true" /> WhatsApp Us
           </a>
@@ -43,7 +43,7 @@ export default function Footer() {
       <div className="border-t border-white/10">
         <div className="container-x flex flex-col items-center justify-between gap-2 py-6 text-sm sm:flex-row">
           <p>© {new Date().getFullYear()} {clinic.name}. All rights reserved.</p>
-          <p>{clinic.doctor} · Hassan, Karnataka</p>
+          <p>{text.footer.bottom}</p>
         </div>
       </div>
     </footer>
